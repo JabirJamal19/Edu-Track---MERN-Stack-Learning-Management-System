@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { getUserFromToken, getToken } from "../Utils/Auth";
+import { getUserFromToken } from "../Utils/Auth"; // Removed getToken from import
 
 const Layout = ({ children }) => {
   const navigate = useNavigate();
-  const user = getUserFromToken();
+  const user = getUserFromToken(); // This function internally uses getToken()
 
   const handleLogout = () => {
     localStorage.removeItem("token");
