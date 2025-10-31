@@ -17,7 +17,7 @@ export default defineConfig({
     },
   },
   server: {
-    port: 3000,
+    port: 3001,
     proxy: {
       '/api': {
         target: 'http://localhost:5000',
@@ -45,5 +45,14 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom'],
+    esbuildOptions: {
+      loader: {
+        '.js': 'jsx',
+      },
+    },
+  },
+  // Windows esbuild fix
+  esbuild: {
+    logOverride: { 'this-is-undefined-in-esm': 'silent' }
   },
 })
